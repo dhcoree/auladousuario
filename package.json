@@ -1,0 +1,10 @@
+{
+  "name": "auladousuario",
+  "version": "1.0.0",
+  "description": "aprendendo com o Japuneis (x",
+  "main": "server.js",
+  "repository": "https://github.com/dhcoree/auladousuario.git",
+  "author": "DH",
+  "license": "MIT",
+  "private": false
+}
