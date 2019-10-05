@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>test</title>
+  </head>
+  <body>
+    <div id="requests">
+
+    </div>
+    <div>
+      <button id="send-request">
+        Send request
+      </button>
+    </div>
+    <script>
+      let continuar = true
+
+      while (continuar) {
+        continuar = confirm('Continuar?')
+      }
+    </script>
+    <script>
+      const sendRequestBtn = document.querySelector('#send-request'),
+            requestBox     = document.querySelector('#requests')
+
+      let count = 1
+
+      sendRequestBtn.addEventListener('click', async () => {
+
+        try {
+          const response = await fetch(`${location.origin}/api/request`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ test: `ola do cliente | ${count}x` })
+          })
+
+          count++
+
+          const json = await response.json()
+
+          const message = document.createElement('p')
+          message.textContent = JSON.stringify(json)
+
+          requestBox.appendChild(message)
+        } catch (error) {
+          console.warn(error)
+        }
+      })
+    </script>
+  </body>
+</html>
